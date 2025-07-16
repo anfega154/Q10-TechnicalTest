@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Q10-TechnicalTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75f9bbf88370b2f36bcd4118588647b68562716d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Q10-TechnicalTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Q10-TechnicalTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
