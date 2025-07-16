@@ -2,21 +2,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Q10_TechnicalTest.Data;
 using Q10_TechnicalTest.Models;
+using Q10_TechnicalTest.Services.Interfaces;
 
 namespace Q10_TechnicalTest.Controllers;
 
 public class StudentsController : Controller
 {
-    private readonly ApplicationDbContext _context;
+   private readonly IStudentService _studentService;
 
-    public StudentsController(ApplicationDbContext context)
+    public StudentsController(IStudentService studentService)
     {
-        _context = context;
+        _studentService = studentService;
     }
 
     public async Task<IActionResult> Index()
     {
-        var students = await _context.Students.ToListAsync();
+        var students = await _studentService.GetAllAsync();
         return View(students);
     }
 
@@ -28,8 +29,7 @@ public class StudentsController : Controller
     {
         if (!ModelState.IsValid) return View(student);
 
-        _context.Add(student);
-        await _context.SaveChangesAsync();
+        await _studentService.AddAsync(student);
         return RedirectToAction(nameof(Index));
     }
 }
