@@ -1,0 +1,14 @@
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Q10-TechnicalTest.exe
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Q10-TechnicalTest.deps.json
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Q10-TechnicalTest.runtimeconfig.json
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Q10-TechnicalTest.dll
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Q10-TechnicalTest.pdb
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.AssemblyInfoInputs.cache
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.AssemblyInfo.cs
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.csproj.CoreCompileInputs.cache
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.dll
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\refint\Q10-TechnicalTest.dll
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.pdb
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.genruntimeconfig.cache
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\ref\Q10-TechnicalTest.dll
