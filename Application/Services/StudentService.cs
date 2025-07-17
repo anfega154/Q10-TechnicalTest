@@ -1,119 +1,103 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿
 using Q10_TechnicalTest.Domain.Entities;
-using Q10_TechnicalTest.Infraestructure.Interfaces;
-using Q10_TechnicalTest.Utils;
+
+using Microsoft.EntityFrameworkCore;
 using Q10_TechnicalTest.Domain.Interfaces;
+using Q10_TechnicalTest.Infraestructure.Data;
+using Q10_TechnicalTest.Utils;
 
-namespace Q10_TechnicalTest.Application.Services;
-
-public class StudentService : IStudentService
+namespace Q10_TechnicalTest.Application.Services
 {
-    private readonly IStudentRepository _repository;
-
-    public StudentService(IStudentRepository repository)
+    public class StudentService : IStudentService
     {
-        _repository = repository;
-    }
+        private readonly ApplicationDbContext _context;
 
-    public async Task<IEnumerable<Student>> GetAll()
-        => await _repository.GetAll().ToListAsync();
-
-    public async Task<Student> GetById(int id)
-        => await _repository.GetById(id)
-            ?? throw new DomainException("Estudiante no encontrado");
-
-    public async Task<Student> Create(StudentDto studentDto)
-    {
-        ValidateStudent(studentDto);
-        await ValidateUniqueConstraints(studentDto);
-
-        var student = new Student
+        public StudentService(ApplicationDbContext context)
         {
-            Name = studentDto.Name,
-            Document = studentDto.Document,
-            Email = studentDto.Email
-        };
-
-        await _repository.Add(student);
-        return student;
-    }
-
-    public async Task<Student> Update(StudentDto studentDto)
-    {
-        var existingStudent = await _repository.GetById(studentDto.Id)
-            ?? throw new DomainException("Estudiante no encontrado");
-
-        ValidateStudent(studentDto);
-        await ValidateUniqueConstraints(studentDto);
-
-        existingStudent.Name = studentDto.Name;
-        existingStudent.Document = studentDto.Document;
-        existingStudent.Email = studentDto.Email;
-
-        await _repository.Update(existingStudent);
-        return existingStudent;
-    }
-
-    public async Task Delete(int id)
-    {
-        var student = await _repository.GetByIdWithSubjects(id)
-            ?? throw new DomainException("Estudiante no encontrado");
-
-        if (student.StudentSubjects?.Any() == true)
-        {
-            await _repository.DeleteStudentSubjects(student.StudentSubjects);
+            _context = context;
         }
 
-        await _repository.Delete(id);
-    }
-
-    public async Task<bool> Exists(int id)
-        => await _repository.Exists(id);
-
-    public async Task<PaginatedList<Student>> GetPaginatedList(int pageNumber, int pageSize, string searchString = null)
-    {
-        var query = _repository.GetAll();
-
-        if (!string.IsNullOrEmpty(searchString))
+        public async Task<IEnumerable<Student>> GetAll()
         {
-            query = query.Where(s =>
-                s.Name.Contains(searchString) ||
-                s.Email.Contains(searchString) ||
-                s.Document.Contains(searchString));
+            return await _context.Students.ToListAsync();
         }
 
-        return await PaginatedList<Student>.CreateAsync(query, pageNumber, pageSize, searchString);
-    }
+        public async Task<Student> GetById(int id)
+        {
+            return await _context.Students.FindAsync(id);
+        }
 
-    private void ValidateStudent(StudentDto student)
-    {
-        if (string.IsNullOrWhiteSpace(student.Name))
-            throw new DomainException("El nombre es requerido");
+        public async Task<Student> Create(StudentDto studentDto)
+        {
+            var student = new Student
+            {
+                Name = studentDto.Name,
+                Document = studentDto.Document,
+                Email = studentDto.Email
+            };
 
-        if (string.IsNullOrWhiteSpace(student.Email))
-            throw new DomainException("El email es requerido");
+            _context.Students.Add(student);
+            await _context.SaveChangesAsync();
 
-        if (!new EmailAddressAttribute().IsValid(student.Email))
-            throw new DomainException("Email no válido");
+            return student;
+        }
 
-        if (string.IsNullOrWhiteSpace(student.Document))
-            throw new DomainException("El documento es requerido");
-    }
+        public async Task<Student> Update(StudentDto studentDto)
+        {
+            var student = await _context.Students.FindAsync(studentDto.Id);
+            if (student == null)
+            {
+                throw new Exception($"Student with ID {studentDto.Id} not found.");
+            }
 
-    private async Task ValidateUniqueConstraints(StudentDto student)
-    {
-       var existingStudentDoc = await _repository.DocumentExist(student.Document);
-        if (existingStudentDoc != null && existingStudentDoc.Id != student.Id)
-            throw new DomainException($"Ya existe un usuario con el documento: {student.Document}");
+            student.Name = studentDto.Name;
+            student.Document = studentDto.Document;
+            student.Email = studentDto.Email;
 
-        var existingStudentEmail = await _repository.GetByEmail(student.Email);
-        if (existingStudentEmail != null && existingStudentEmail.Id != student.Id)
-            throw new DomainException("El email ya está registrado");
-    }
+            _context.Students.Update(student);
+            await _context.SaveChangesAsync();
 
-    Task<PaginatedList<Student>> IStudentService.GetPaginatedList(int pageNumber, int pageSize, string searchString)
-    {
-        throw new NotImplementedException();
+            return student;
+        }
+
+        public async Task Delete(int id)
+        {
+            var student = await _context.Students.FindAsync(id);
+            if (student == null)
+            {
+                throw new Exception($"Student with ID {id} not found.");
+            }
+
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> Exists(int id)
+        {
+            return await _context.Students.AnyAsync(s => s.Id == id);
+        }
+
+        public async Task<PaginatedList<Student>> GetPaginatedList(int pageNumber, int pageSize, string searchString = null)
+        {
+            var query = _context.Students.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                query = query.Where(s =>
+                    s.Name.Contains(searchString) ||
+                    s.Document.Contains(searchString) ||
+                    s.Email.Contains(searchString));
+            }
+
+            var count = await query.CountAsync();
+
+            var items = await query
+                .OrderBy(s => s.Name)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return new PaginatedList<Student>(items, count, pageNumber, pageSize);
+        }
     }
 }

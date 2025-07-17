@@ -1,0 +1,186 @@
+﻿@page
+@model Q10_TechnicalTest.Web.Pages.Students.CreateModel
+
+@{
+    ViewData["Title"] = "Registrar Nuevo Estudiante";
+}
+
+<div class="container-fluid">
+    <!-- Header Section -->
+    <div class="row bg-gradient-success text-white py-4 mb-5 rounded-3" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+        <div class="col-12">
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <i class="fas fa-user-plus fa-3x"></i>
+                </div>
+                <div>
+                    <h1 class="display-5 fw-bold mb-1">@ViewData["Title"]</h1>
+                    <p class="mb-0 opacity-75">Complete la información del nuevo estudiante</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <!-- Form Card -->
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-light border-0 py-4">
+                    <h4 class="mb-0 text-primary">
+                        <i class="fas fa-user-edit me-2"></i>Información Personal
+                    </h4>
+                </div>
+                <div class="card-body p-5">
+                    <form method="post">
+                        <div asp-validation-summary="All" class="alert alert-danger d-none" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Por favor corrige los siguientes errores:</strong>
+                        </div>
+                        
+                        <!-- Nombre Completo -->
+                        <div class="form-floating mb-4">
+                            <input asp-for="Student.Name" class="form-control form-control-lg" 
+                                   placeholder="Ingrese el nombre completo" 
+                                   style="height: 60px;" />
+                            <label asp-for="Student.Name" class="text-muted">
+                                <i class="fas fa-user me-2"></i>Nombre Completo
+                            </label>
+                            <span asp-validation-for="Student.Name" class="text-danger mt-1 d-block"></span>
+                        </div>
+                        
+                        <!-- Documento -->
+                        <div class="form-floating mb-4">
+                            <input asp-for="Student.Document" class="form-control form-control-lg" 
+                                   placeholder="Ingrese el número de documento" 
+                                   style="height: 60px;" />
+                            <label asp-for="Student.Document" class="text-muted">
+                                <i class="fas fa-id-card me-2"></i>Número de Documento
+                            </label>
+                            <span asp-validation-for="Student.Document" class="text-danger mt-1 d-block"></span>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-floating mb-5">
+                            <input asp-for="Student.Email" class="form-control form-control-lg" 
+                                   placeholder="correo@ejemplo.com" 
+                                   style="height: 60px;" />
+                            <label asp-for="Student.Email" class="text-muted">
+                                <i class="fas fa-envelope me-2"></i>Correo Electrónico
+                            </label>
+                            <span asp-validation-for="Student.Email" class="text-danger mt-1 d-block"></span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-between">
+                            <a asp-page="Index" class="btn btn-outline-secondary btn-lg px-5 rounded-pill">
+                                <i class="fas fa-arrow-left me-2"></i>Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-success btn-lg px-5 rounded-pill shadow-sm">
+                                <i class="fas fa-save me-2"></i>Guardar Estudiante
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="card border-0 shadow-sm mt-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="card-body text-white p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-1">
+                                <i class="fas fa-info-circle me-2"></i>Información Importante
+                            </h5>
+                            <p class="mb-0 opacity-75">
+                                Todos los campos son obligatorios. El documento debe ser único en el sistema.
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-graduation-cap fa-3x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        color: #0d6efd !important;
+        font-weight: 600;
+    }
+    
+    .form-control:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+    
+    .btn {
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+    
+    .btn-success:hover {
+        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+    }
+    
+    .card {
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .alert {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .form-floating {
+        position: relative;
+    }
+    
+    .form-floating > .form-control {
+        border-radius: 15px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+    
+    .form-floating > label {
+        padding-left: 15px;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script>
+        // Mostrar alertas de validación
+        document.addEventListener('DOMContentLoaded', function() {
+            const validationSummary = document.querySelector('[asp-validation-summary]');
+            if (validationSummary && validationSummary.innerHTML.trim()) {
+                validationSummary.classList.remove('d-none');
+            }
+        });
+        
+        // Efectos de focus en inputs
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+}

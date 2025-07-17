@@ -1,6 +1,5 @@
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\appsettings.json
-C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Web\Properties\launchSettings.json
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Q10-TechnicalTest.staticwebassets.runtime.json
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Q10-TechnicalTest.exe
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\bin\Debug\net8.0\Q10-TechnicalTest.deps.json
@@ -149,7 +148,6 @@ C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\staticwebassets\
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Q10-TechnicalTest.props
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Q10-TechnicalTest.props
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\scopedcss\Web\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\scopedcss\bundle\Q10-TechnicalTest.styles.css
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\scopedcss\projectbundle\Q10-TechnicalTest.bundle.scp.css
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-Tech.91057641.Up2Date
@@ -158,3 +156,4 @@ C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\refint\Q10-Techn
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.pdb
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\Q10-TechnicalTest.genruntimeconfig.cache
 C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\ref\Q10-TechnicalTest.dll
+C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css

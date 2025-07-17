@@ -1,0 +1,238 @@
+﻿@page
+@model Q10_TechnicalTest.Web.Pages.Students.EditModel
+
+@{
+    ViewData["Title"] = "Editar Estudiante";
+}
+
+<div class="container-fluid">
+    <!-- Header Section -->
+    <div class="row bg-gradient-warning text-white py-4 mb-5 rounded-3" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <div class="col-12">
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <i class="fas fa-user-edit fa-3x"></i>
+                </div>
+                <div>
+                    <h1 class="display-5 fw-bold mb-1">@ViewData["Title"]</h1>
+                    <p class="mb-0 opacity-75">Actualiza la información del estudiante seleccionado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <!-- Form Card -->
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-light border-0 py-4">
+                    <h4 class="mb-0 text-warning">
+                        <i class="fas fa-edit me-2"></i>Modificar Información Personal
+                    </h4>
+                </div>
+                <div class="card-body p-5">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Por favor corrige los siguientes errores:</strong>
+                        </div>
+                        
+                        <input type="hidden" asp-for="StudentDto.Id" />
+                        
+                        <!-- Nombre Completo -->
+                        <div class="form-floating mb-4">
+                            <input asp-for="StudentDto.Name" class="form-control form-control-lg" 
+                                   placeholder="Ingrese el nombre completo" 
+                                   style="height: 60px;" />
+                            <label asp-for="StudentDto.Name" class="text-muted">
+                                <i class="fas fa-user me-2"></i>Nombre Completo
+                            </label>
+                            <span asp-validation-for="StudentDto.Name" class="text-danger mt-1 d-block"></span>
+                        </div>
+                        
+                        <!-- Documento -->
+                        <div class="form-floating mb-4">
+                            <input asp-for="StudentDto.Document" class="form-control form-control-lg" 
+                                   placeholder="Ingrese el número de documento" 
+                                   style="height: 60px;" />
+                            <label asp-for="StudentDto.Document" class="text-muted">
+                                <i class="fas fa-id-card me-2"></i>Número de Documento
+                            </label>
+                            <span asp-validation-for="StudentDto.Document" class="text-danger mt-1 d-block"></span>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-floating mb-5">
+                            <input asp-for="StudentDto.Email" class="form-control form-control-lg" 
+                                   placeholder="correo@ejemplo.com" 
+                                   style="height: 60px;" />
+                            <label asp-for="StudentDto.Email" class="text-muted">
+                                <i class="fas fa-envelope me-2"></i>Correo Electrónico
+                            </label>
+                            <span asp-validation-for="StudentDto.Email" class="text-danger mt-1 d-block"></span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-between">
+                            <a asp-page="Index" class="btn btn-outline-secondary btn-lg px-5 rounded-pill">
+                                <i class="fas fa-arrow-left me-2"></i>Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-warning btn-lg px-5 rounded-pill shadow-sm text-white">
+                                <i class="fas fa-save me-2"></i>Actualizar Estudiante
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="card border-0 shadow-sm mt-4" style="background: linear-gradient(135deg, #ff9a56 0%, #ffad56 100%);">
+                <div class="card-body text-white p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-1">
+                                <i class="fas fa-info-circle me-2"></i>Información de Edición
+                            </h5>
+                            <p class="mb-0 opacity-75">
+                                Modifica únicamente los campos que necesites actualizar. El documento debe seguir siendo único.
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-user-cog fa-3x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Info Preview -->
+            <div class="card border-0 shadow-sm mt-4">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <div class="avatar-circle-large">
+                                @(Model.StudentDto.Name?.Substring(0, 1).ToUpper() ?? "E")
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <h5 class="mb-1 text-primary">Editando: @Model.StudentDto.Name</h5>
+                            <p class="text-muted mb-1">
+                                <i class="fas fa-id-card me-1"></i>Documento: @Model.StudentDto.Document
+                            </p>
+                            <p class="text-muted mb-0">
+                                <i class="fas fa-envelope me-1"></i>Email: @Model.StudentDto.Email
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        color: #f57c00 !important;
+        font-weight: 600;
+    }
+    
+    .form-control:focus {
+        border-color: #ffb74d;
+        box-shadow: 0 0 0 0.25rem rgba(245, 124, 0, 0.15);
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+    
+    .btn {
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+    
+    .btn-warning:hover {
+        box-shadow: 0 8px 25px rgba(245, 124, 0, 0.3);
+    }
+    
+    .card {
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .alert {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .form-floating {
+        position: relative;
+    }
+    
+    .form-floating > .form-control {
+        border-radius: 15px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+    
+    .form-floating > label {
+        padding-left: 15px;
+    }
+    
+    .avatar-circle-large {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 24px;
+        margin: 0 auto;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script>
+        // Mostrar alertas de validación
+        document.addEventListener('DOMContentLoaded', function() {
+            const validationSummary = document.querySelector('[asp-validation-summary]');
+            if (validationSummary && validationSummary.innerHTML.trim()) {
+                validationSummary.classList.remove('d-none');
+            }
+        });
+        
+        // Efectos de focus en inputs
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Highlight campos modificados
+        inputs.forEach(input => {
+            const originalValue = input.value;
+            input.addEventListener('input', function() {
+                if (this.value !== originalValue) {
+                    this.style.borderColor = '#f57c00';
+                    this.style.backgroundColor = '#fff8e1';
+                } else {
+                    this.style.borderColor = '#e9ecef';
+                    this.style.backgroundColor = '#fff';
+                }
+            });
+        });
+    </script>
+}

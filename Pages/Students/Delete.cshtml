@@ -1,0 +1,249 @@
+﻿@page "{id:int}"
+@model Q10_TechnicalTest.Web.Pages.Students.DeleteModel
+
+@{
+    ViewData["Title"] = "Eliminar Estudiante";
+}
+
+<div class="container-fluid">
+    <!-- Header Section -->
+    <div class="row bg-gradient-danger text-white py-4 mb-5 rounded-3" style="background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);">
+        <div class="col-12">
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <i class="fas fa-user-minus fa-3x"></i>
+                </div>
+                <div>
+                    <h1 class="display-5 fw-bold mb-1">@ViewData["Title"]</h1>
+                    <p class="mb-0 opacity-75">Confirma la eliminación del estudiante seleccionado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            
+            <!-- Warning Alert -->
+            <div class="card border-0 shadow-lg mb-4" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);">
+                <div class="card-body text-white p-5 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-exclamation-triangle fa-4x opacity-75"></i>
+                    </div>
+                    <h3 class="fw-bold mb-3">⚠️ Acción Irreversible</h3>
+                    <p class="lead mb-3">¿Estás completamente seguro que deseas eliminar este estudiante?</p>
+                    <p class="mb-0 opacity-75">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Esta acción no se puede deshacer y se perderán todos los datos asociados.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Student Information Card -->
+            <div class="card border-0 shadow-lg mb-4">
+                <div class="card-header bg-light border-0 py-4">
+                    <h4 class="mb-0 text-danger">
+                        <i class="fas fa-user-times me-2"></i>Estudiante a Eliminar
+                    </h4>
+                </div>
+                <div class="card-body p-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 text-center mb-4 mb-md-0">
+                            <div class="avatar-circle-delete mx-auto">
+                                @(Model.Student.Name?.Substring(0, 1).ToUpper() ?? "E")
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <h3 class="text-primary mb-3 fw-bold">@Model.Student.Name</h3>
+                            <div class="student-details">
+                                <div class="detail-item mb-3">
+                                    <i class="fas fa-id-card text-muted me-3"></i>
+                                    <span class="detail-label">Documento:</span>
+                                    <span class="detail-value">@Model.Student.Document</span>
+                                </div>
+                                <div class="detail-item mb-3">
+                                    <i class="fas fa-envelope text-muted me-3"></i>
+                                    <span class="detail-label">Email:</span>
+                                    <span class="detail-value">@Model.Student.Email</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar text-muted me-3"></i>
+                                    <span class="detail-label">ID del Sistema:</span>
+                                    <span class="detail-value">#@Model.Student.Id</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirmation Form -->
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-5">
+                    <form method="post">
+                        <input type="hidden" asp-for="Student.Id" />
+                        
+                        <div class="text-center mb-4">
+                            <h5 class="text-muted mb-3">
+                                <i class="fas fa-question-circle me-2"></i>
+                                ¿Confirmas la eliminación?
+                            </h5>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                            <a asp-page="Index" class="btn btn-outline-secondary btn-lg px-5 rounded-pill">
+                                <i class="fas fa-times me-2"></i>No, Cancelar
+                            </a>
+                            <button type="submit" 
+                                    class="btn btn-danger btn-lg px-5 rounded-pill shadow-sm confirm-delete-btn">
+                                <i class="fas fa-trash-alt me-2"></i>Sí, Eliminar Definitivamente
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="card border-0 shadow-sm mt-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="card-body text-white p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h6 class="mb-1">
+                                <i class="fas fa-shield-alt me-2"></i>Política de Eliminación
+                            </h6>
+                            <p class="mb-0 opacity-75 small">
+                                Por seguridad, se recomienda verificar que no existan datos dependientes antes de proceder.
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-database fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .avatar-circle-delete {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 36px;
+        border: 4px solid #fff;
+        box-shadow: 0 8px 25px rgba(255, 65, 108, 0.3);
+    }
+    
+    .detail-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #f8f9fa;
+    }
+    
+    .detail-item:last-child {
+        border-bottom: none;
+    }
+    
+    .detail-label {
+        font-weight: 600;
+        color: #6c757d;
+        min-width: 120px;
+        margin-right: 10px;
+    }
+    
+    .detail-value {
+        font-weight: 500;
+        color: #212529;
+    }
+    
+    .confirm-delete-btn {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        animation: pulse-danger 2s infinite;
+    }
+    
+    .confirm-delete-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+    }
+    
+    .confirm-delete-btn:active {
+        transform: scale(0.98);
+    }
+    
+    .card {
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .btn {
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+    
+    @@keyframes pulse-danger {
+        0% {
+            box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+        }
+    }
+    
+    .student-details .detail-item:hover {
+        background-color: #f8f9fa;
+        padding-left: 15px;
+        transition: all 0.3s ease;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Confirmación adicional para eliminación
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteBtn = document.querySelector('.confirm-delete-btn');
+            
+            deleteBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // SweetAlert2 o confirmación nativa
+                if (confirm('⚠️ ÚLTIMA ADVERTENCIA\n\n¿Estás ABSOLUTAMENTE seguro de que deseas eliminar a "@Model.Student.Name"?\n\nEsta acción es IRREVERSIBLE.')) {
+                    this.closest('form').submit();
+                }
+            });
+            
+            // Efectos de hover en detalles
+            const detailItems = document.querySelectorAll('.detail-item');
+            detailItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = '#f8f9fa';
+                    this.style.paddingLeft = '15px';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = 'transparent';
+                    this.style.paddingLeft = '0';
+                });
+            });
+        });
+    </script>
+}
