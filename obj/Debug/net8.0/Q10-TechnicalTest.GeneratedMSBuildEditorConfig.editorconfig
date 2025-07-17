@@ -26,10 +26,74 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\aganan\Desktop\.NET\Q10-TechnicalTest
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Views/Students/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Views/Students/index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcaW5kZXguY3NodG1s
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFByaXZhY3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Shared/_PaginationPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFNoYXJlZFxfUGFnaW5hdGlvblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Students/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN0dWRlbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Students/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN0dWRlbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Students/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN0dWRlbnRzXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Students/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN0dWRlbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Students/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN0dWRlbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Subjects/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN1YmplY3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Subjects/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN1YmplY3RzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Subjects/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN1YmplY3RzXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Subjects/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN1YmplY3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Subjects/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFN1YmplY3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aganan/Desktop/.NET/Q10-TechnicalTest/Web/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFBhZ2VzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-7t7wj158a4

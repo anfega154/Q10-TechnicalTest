@@ -1,0 +1,33 @@
+﻿@page "{id:int}"
+@model Q10_TechnicalTest.Web.Pages.Subjects.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalles de Materia";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Información de la Materia</h4>
+            <hr />
+            
+            <dl class="row">
+                <dt class="col-sm-3">Código:</dt>
+                <dd class="col-sm-9">@Model.Subject.Code</dd>
+                
+                <dt class="col-sm-3">Nombre:</dt>
+                <dd class="col-sm-9">@Model.Subject.Name</dd>
+                
+                <dt class="col-sm-3">Créditos:</dt>
+                <dd class="col-sm-9">@Model.Subject.Credits</dd>
+            </dl>
+            
+            <div class="mt-4">
+                <a asp-page="./Edit" asp-route-id="@Model.Subject.Id" class="btn btn-warning">Editar</a>
+                <a asp-page="./Index" class="btn btn-secondary">Volver al listado</a>
+            </div>
+        </div>
+    </div>
+</div>

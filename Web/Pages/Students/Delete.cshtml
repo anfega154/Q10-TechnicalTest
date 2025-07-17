@@ -1,0 +1,33 @@
+﻿@page "{id:int}"
+@model Q10_TechnicalTest.Web.Pages.Students.DeleteModel
+
+@{
+    ViewData["Title"] = "Eliminar Estudiante";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="alert alert-warning">
+        <h4>¿Estás seguro que deseas eliminar este estudiante?</h4>
+        <p>Esta acción no se puede deshacer.</p>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Student.Name</h5>
+            <p class="card-text">
+                <strong>Documento:</strong> @Model.Student.Document<br>
+                <strong>Email:</strong> @Model.Student.Email
+            </p>
+        </div>
+    </div>
+
+    <form method="post">
+        <input type="hidden" asp-for="Student.Id" />
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Confirmar Eliminación
+        </button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

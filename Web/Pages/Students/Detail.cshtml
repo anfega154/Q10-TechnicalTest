@@ -1,0 +1,113 @@
+﻿@page "{id:int}"
+@model Q10_TechnicalTest.Web.Pages.Students.DetailModel
+
+@{
+    ViewData["Title"] = "Detalles del Estudiante";
+}
+
+
+
+<div class="container">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Información del Estudiante</h4>
+            <hr />
+            
+            <dl class="row">
+                <dt class="col-sm-3">Nombre:</dt>
+                <dd class="col-sm-9">@Model.Student.Name</dd>
+                
+                <dt class="col-sm-3">Documento:</dt>
+                <dd class="col-sm-9">@Model.Student.Document</dd>
+                
+                <dt class="col-sm-3">Email:</dt>
+                <dd class="col-sm-9">@Model.Student.Email</dd>
+            </dl>
+
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h3>Materias Inscritas</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Créditos</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var subject in Model.EnrolledSubjects)
+                            {
+                                <tr>
+                                    <td>@subject.Name</td>
+                                    <td>@subject.Credits</td>
+                                    <td>
+                                        <form method="post" asp-page-handler="Unenroll">
+                                            <input type="hidden" name="studentId" value="@Model.Student.Id" />
+                                            <input type="hidden" name="subjectId" value="@subject.Id" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Desasignar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+        
+                <div class="col-md-6">
+                    <h3>Materias Disponibles</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Créditos</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var subject in Model.AvailableSubjects)
+                            {
+                                <tr>
+                                    <td>@subject.Name</td>
+                                    <td>@subject.Credits</td>
+                                    <td>
+                                        <form method="post" asp-page-handler="Enroll">
+                                            <input type="hidden" name="studentId" value="@Model.Student.Id" />
+                                            <input type="hidden" name="subjectId" value="@subject.Id" />
+                                            <button type="submit" class="btn btn-success btn-sm">Asignar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <a asp-page="./Edit" asp-route-id="@Model.Student.Id" class="btn btn-warning">Editar</a>
+                <a asp-page="./Index" class="btn btn-secondary">Volver al listado</a>
+            </div>
+        </div>
+    </div>
+</div>

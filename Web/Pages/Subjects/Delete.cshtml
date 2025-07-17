@@ -1,0 +1,40 @@
+﻿@page "{id:int}"
+@model Q10_TechnicalTest.Web.Pages.Subjects.DeleteModel
+
+@{
+    ViewData["Title"] = "Eliminar Materia";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">
+            <h4>Error al eliminar</h4>
+            <p>@Model.ErrorMessage</p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            <h4>¿Estás seguro que deseas eliminar esta materia?</h4>
+            <p>Esta acción no se puede deshacer.</p>
+        </div>
+    }
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Subject.Name (@Model.Subject.Code)</h5>
+            <p class="card-text">Créditos: @Model.Subject.Credits</p>
+        </div>
+    </div>
+
+    <form method="post">
+        <input type="hidden" asp-for="Subject.Id" />
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Confirmar Eliminación
+        </button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
